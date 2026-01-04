@@ -2,8 +2,10 @@ package Test;
 
 import Domain.Books;
 import Domain.LibrarySystem;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
 
 public class LibraryTest {
     public static void main(String[] args) {
@@ -11,6 +13,7 @@ public class LibraryTest {
         LibrarySystem ls = new LibrarySystem();
         Scanner sc = new Scanner(System.in);
         int numeroEscolhido;
+        List<Books> livrosParaAdicionarNaLista = new ArrayList<>();
 
 
         do {
@@ -29,6 +32,7 @@ public class LibraryTest {
                 String autorLivro = sc.nextLine();
                 Books book = new Books(nomeLivro.toUpperCase(), autorLivro.toUpperCase());
                 ls.registerBook(book);
+                livrosParaAdicionarNaLista.add(book);
                 System.out.println("LIVRO CADASTRADO COM SUCESSO");
                 ls.listaLivros();
                 break;
@@ -36,7 +40,9 @@ public class LibraryTest {
             case 2:
                 System.out.println("Deseja listar somente livros disponíveis? (S/N)");
                 char yesOrNo = sc.next().charAt(0);
+                Character.toUpperCase(yesOrNo);
                 if (yesOrNo == 'S' ){
+                livrosParaAdicionarNaLista.stream().filter(p -> p.isAvailable() == true).forEach(System.out::println);
 
                 }else if (yesOrNo == 'N'){
                     ls.listaLivros();

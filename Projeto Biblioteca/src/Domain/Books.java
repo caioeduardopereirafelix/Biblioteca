@@ -21,6 +21,10 @@ public class Books {
         return author;
     }
 
+    public boolean isAvailable() {
+        return available;
+    }
+
     @Override
     public String toString() {
         return
