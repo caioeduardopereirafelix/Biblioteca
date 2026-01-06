@@ -21,10 +21,13 @@ public class LibraryTest {
 
         do {
             System.out.println("=== SISTEMA DE BIBLIOTECA ===");
-            System.out.println("=== 1 - Cadastrar Livro ====");
-            System.out.println("=== 2 - Listar Livros Catálogo");
-            System.out.println("=== 3 - Cadastrar usuário");
-            System.out.println("=== 4 - Listar Usuario");
+            System.out.println("=== 1 - Cadastro de Livro ===");
+            System.out.println("=== 2 - Catalogo de Livro ===");
+            System.out.println("=== 3 - Cadastro de Usuário ===");
+            System.out.println("=== 4 - Lista de Usuario ===");
+            System.out.println("=== 5 - Emprestimo de Livro ===");
+            System.out.println("=== 6 - Devolução do Livro ===");
+            System.out.println("=== 0 - Sair ===");
             numeroEscolhido = sc.nextInt();
             sc.nextLine();
 
