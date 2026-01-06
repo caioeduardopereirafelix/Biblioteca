@@ -59,6 +59,18 @@ public class LibrarySystem {
             }
 
         }
-    }
+
+        public void returnBooks(String title, String userReturnBook){
+            for (Books book: booksList){
+                for (User user: userList){
+                    if (book.getTitle().equalsIgnoreCase(title) && !book.isAvailable() && user.getName().equalsIgnoreCase(userReturnBook)){
+                        user.removeBooksUser(title);
+                        changeAvailableTrue(title);
+                        System.out.println("Livro " + title + " devolvido com sucesso pelo usuario: " + userReturnBook);
+                    }
+                }
+            }
+        }
+
 
 }

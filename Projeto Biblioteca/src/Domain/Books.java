@@ -8,8 +8,8 @@ public class Books {
     private String author;
     private boolean available = true;
 
-    public Books(String titulo, String author) {
-        this.title = titulo;
+    public Books(String title, String author) {
+        this.title = title;
         this.author = author;
     }
 
@@ -23,6 +23,10 @@ public class Books {
 
     public boolean isAvailable() {
         return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     @Override
