@@ -87,6 +87,6 @@ public class LibraryTest {
 
 
         }
-            }while (numeroEscolhido != 0);
+            }while (numeroEscolhido != 0 && numeroEscolhido <=6);
     }
 }
