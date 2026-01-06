@@ -47,16 +47,27 @@ public class LibrarySystem {
         }
     }
 
-        public void toLoanBook (String nameBook, String nameUserLoan) {
-            for (Books book : booksList) {
-                for (User user : userList) {
-                    if (book.getTitle().equalsIgnoreCase(nameBook) && user.getName().equalsIgnoreCase(nameUserLoan)) {
-                        user.loanBook(nameBook);
-                        changeAvailableFalse(nameBook);
-                        System.out.println("livro " + nameBook + " emprestado com sucesso para o usuario " + nameUserLoan);
-                    }
-                }
+    public void toLoanBook(String nameBook, String nameUserLoan) {
+        String bookFound = null;
+        String userFound = null;
+
+        for (Books books : booksList) {
+            if (books.getTitle().equalsIgnoreCase(nameBook)) {
+                bookFound = nameBook;
             }
+        }
+
+        for (User user : userList) {
+            if (user.getName().equalsIgnoreCase(nameUserLoan)) {
+                userFound = nameUserLoan;
+            }
+        }
+        User user = new User();
+        Books book = new Books();
+        user.loanBook(nameBook);
+        book.setAvailable(false);
+        System.out.println("Livro " + nameBook + " Emprestado para o usuario " + nameUserLoan);
+
 
         }
 
