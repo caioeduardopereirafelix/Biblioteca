@@ -88,5 +88,10 @@ public class LibrarySystem {
         System.out.println("Livro " + nameBook + " emprestado com sucesso para o usuario " + nameUserBorrowed);
     }
 
+    public void returnBooks(String nameBookForReturn, String userReturnBook) {
+        Books localNameBookForReturn = null;
+        User localNameUserReturnBook;
+
+    }
 
 }
