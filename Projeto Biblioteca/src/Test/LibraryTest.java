@@ -65,7 +65,25 @@ public class LibraryTest {
             case 5:
                 System.out.println("Qual o nome do livro que deseja pegar emprestado?");
                 String nameBook = sc.nextLine();
-                ls.emprestarLivro(nameBook.toUpperCase());
+                System.out.println("Qual o nome do usuario que vai pegar esse livro?");
+                String nameLoan = sc.nextLine();
+                ls.toLoanBook(nameBook.toUpperCase(), nameLoan.toUpperCase());
+                break;
+
+            case 6:
+                System.out.println("Qual livro deseja devolver?");
+                String nameBookReturn = sc.nextLine();
+                System.out.println("Para qual usuario foi emprestado esse livro?");
+                String nameUserReturnBook = sc.nextLine();
+                user.removeBooksUser(nameBookReturn);
+                ls.returnBooks(nameBookReturn.toUpperCase(), nameUserReturnBook.toUpperCase());
+                break;
+
+            case 0:
+                System.out.println("Programa encerrado");
+
+
+
 
 
         }
