@@ -21,7 +21,7 @@ public class User {
         return name;
     }
 
-    public List<String> getBorrowedBooks() {
+    public List<Books> getBorrowedBooks() {
         return borrowedBooks;
     }
 
