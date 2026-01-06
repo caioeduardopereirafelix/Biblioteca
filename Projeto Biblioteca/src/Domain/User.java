@@ -25,8 +25,8 @@ public class User {
         return borrowedBooks;
     }
 
-    public void loanBook(String title){
-        borrowedBooks.add(title);
+    public void loanBook(Books book){
+        borrowedBooks.add(book);
     }
 
     public void listBooksBorrowed(){
