@@ -1,5 +1,6 @@
 package Test;
 
+import Domain.AvailableBook;
 import Domain.Books;
 import Domain.LibrarySystem;
 import Domain.User;
@@ -48,7 +49,7 @@ public class LibraryTest {
                 char yesOrNo = sc.next().charAt(0);
                 String charEmString = "" + yesOrNo;
                 if (charEmString.equalsIgnoreCase("s")){
-                livrosParaAdicionarNaLista.stream().filter(p -> p.isAvailable() == true).forEach(System.out::println);
+                livrosParaAdicionarNaLista.stream().filter(p -> p.getAvailableBook() == AvailableBook.AVAILABLE).forEach(System.out::println);
 
                 }else if (charEmString.equalsIgnoreCase("n")){
                     ls.listBooks();
@@ -78,17 +79,11 @@ public class LibraryTest {
                 String nameBookReturn = sc.nextLine();
                 System.out.println("Para qual usuario foi emprestado esse livro?");
                 String nameUserReturnBook = sc.nextLine();
-                user.removeBooksUser(nameBookReturn);
                 ls.returnBooks(nameBookReturn.toUpperCase(), nameUserReturnBook.toUpperCase());
                 break;
 
             case 0:
                 System.out.println("Programa encerrado");
-
-
-
-
-
         }
             }while (numeroEscolhido != 0 && numeroEscolhido <=6);
     }

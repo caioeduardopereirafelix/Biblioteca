@@ -8,67 +8,47 @@ public class LibrarySystem {
     List<User> userList = new ArrayList<>();
 
     public LibrarySystem() {
-        this.booksList = booksList;
-        this.userList = userList;
     }
 
-    public void registerBook(Books book){
+    public void registerBook(Books book) {
         booksList.add(book);
         System.out.println("LIVRO CADASTRADO COM SUCESSO" + "\n");
+        book.setAvailableBook(AvailableBook.AVAILABLE);
         listBooks();
     }
 
-    public void registerUser (User user){
-            userList.add(user);
-            System.out.println("Usuario cadastrado com sucesso" + "\n");
+    public void registerUser(User user) {
+        userList.add(user);
+        System.out.println("Usuario cadastrado com sucesso" + "\n");
     }
 
-    public void listBooks(){
+    public void listBooks() {
         System.out.println(booksList);
     }
 
-    public void listUser(){
+    public void listUser() {
         System.out.println(userList);
     }
 
-        public void changeAvailableFalse(String title){
-            for (Books books: booksList){
-                if (books.getTitle().equalsIgnoreCase(title)){
-                    books.setAvailable(false);
-                }
+    public void toLoanBook(String nameBook, String nameUserBorrowed) {
+        Books localNameBookBorrowed = null;
+        User localUsernameBorrowed = null;
+
+        for (Books book : booksList) {
+            if (book.getTitle().equalsIgnoreCase(nameBook)) {
+                localNameBookBorrowed = book;
+                break;
             }
         }
 
-    public void changeAvailableTrue(String title){
-        for (Books books: booksList){
-            if (books.getTitle().equalsIgnoreCase(title)){
-                books.setAvailable(true);
-            }
-        }
-    }
-
-    public void toLoanBook(String nameBook, String nameUserLoan) {
-        String bookFound = null;
-        String userFound = null;
-
-        for (Books books : booksList) {
-            if (books.getTitle().equalsIgnoreCase(nameBook)) {
-                bookFound = nameBook;
-            }
+        if (localNameBookBorrowed == null){
+            System.out.println("Livro nao encontrado");
+            return;
         }
 
-        for (User user : userList) {
-            if (user.getName().equalsIgnoreCase(nameUserLoan)) {
-                userFound = nameUserLoan;
-            }
-        }
-        User user = new User();
-        Books book = new Books();
-        user.loanBook(nameBook);
-        book.setAvailable(false);
-        System.out.println("Livro " + nameBook + " Emprestado para o usuario " + nameUserLoan);
-
-
+        if (localNameBookBorrowed.getAvailableBook() == AvailableBook.BORROWED){
+            System.out.println("Livro ja emprestado");
+            return;
         }
 
         for (User user : userList){
@@ -90,8 +70,33 @@ public class LibrarySystem {
 
     public void returnBooks(String nameBookForReturn, String userReturnBook) {
         Books localNameBookForReturn = null;
-        User localNameUserReturnBook;
+        User localNameUserReturnBook = null;
 
+        for (Books books : booksList){
+            if (books.getTitle().equalsIgnoreCase(nameBookForReturn)){
+                localNameBookForReturn = books;
+                break;
+            }
+        }
+
+        if (localNameBookForReturn == null){
+            System.out.println("Livro nao encontrado na lista");
+            return;
+        }
+
+        for (User user : userList){
+            if (user.getName().equalsIgnoreCase(userReturnBook)){
+                localNameUserReturnBook = user;
+                break;
+            }
+        }
+
+        if (localNameUserReturnBook == null){
+            System.out.println("Usuario nao encontrado em sistema");
+        }
+
+        localNameUserReturnBook.returnBooks(localNameBookForReturn);
+        System.out.println("Livro " + nameBookForReturn + " devolvido com sucesso pelo usuario " + userReturnBook);
     }
 
 }

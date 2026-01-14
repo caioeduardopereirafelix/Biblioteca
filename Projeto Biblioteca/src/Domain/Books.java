@@ -6,7 +6,14 @@ public class Books {
     private UUID idBook = UUID.randomUUID();
     private String title;
     private String author;
-    private boolean available = true;
+    private AvailableBook availableBook;
+
+    public Books() {
+    }
+
+    public Books(String title) {
+        this.title = title;
+    }
 
     public Books(String title, String author) {
         this.title = title;
@@ -21,12 +28,12 @@ public class Books {
         return author;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public void setAvailableBook(AvailableBook availableBook) {
+        this.availableBook = availableBook;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
+    public AvailableBook getAvailableBook() {
+        return availableBook;
     }
 
     @Override
@@ -35,6 +42,6 @@ public class Books {
                 "\n" + "Title Book: " + title + "\n"
                 + "Author Book: " + author + "\n"
                 + "Id Book: " + idBook + "\n"
-                + "Available: " + available + "\n";
+                + "Available: " + availableBook + "\n";
     }
 }

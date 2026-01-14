@@ -7,7 +7,7 @@ import java.util.UUID;
 public class User {
     private UUID id = UUID.randomUUID();
     private String name;
-    List<String> borrowedBooks = new ArrayList<>();
+    List<Books> borrowedBooks = new ArrayList<>();
 
     public User() {
     }
@@ -29,17 +29,14 @@ public class User {
         borrowedBooks.add(book);
     }
 
+    public void returnBooks(Books book){
+        book.setAvailableBook(AvailableBook.AVAILABLE);
+    }
+
     public void listBooksBorrowed(){
         System.out.println(borrowedBooks);
     }
 
-    public void removeBooksUser(String title){
-        for (String booksBorrowed : borrowedBooks){
-            if (booksBorrowed.equalsIgnoreCase(title)){
-                borrowedBooks.remove(title);
-            }
-        }
-    }
 
     @Override
     public String toString() {
